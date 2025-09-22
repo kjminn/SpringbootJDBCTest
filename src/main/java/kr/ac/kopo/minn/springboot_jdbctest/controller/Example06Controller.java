@@ -10,11 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 @Controller
-@RequestMapping("/exam05")
-public class Example05Controller {
+@RequestMapping("/exam06")
+public class Example06Controller {
     @Autowired
     private ProductRepository productRepository;
 
@@ -32,9 +30,10 @@ public class Example05Controller {
         detail.setWeight(200f);
         detail.setWidth(75f);
         detail.setHeight(150f);
+        detail.setProduct(product);
+        detailRepository.save(detail);
 
         product.setDetail(detail);
-
         productRepository.save(product);
 
         Iterable<Product> productList = productRepository.findAll();
@@ -43,7 +42,7 @@ public class Example05Controller {
         model.addAttribute("productList", productList);
         model.addAttribute("detailList", detailList);
 
-        return "viewPage05";
+        return "viewPage06";
     }
 
 }
